@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferie</title>
+    <style>
+        body {
+            align-items: center;
+            height: 100vh;
+	    background-color: lightgrey;
+        }
+        #gif-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Zima Maciej Barczyk</h1>
+    <p>Liczba odwiedzin: <span id="counter">0</span></p>
+    
+    <div id="gif-container"></div>
+
+    <script>
+        function increaseCounter() {
+         
+            if (localStorage.getItem('visitCount')) {
+              
+                let count = parseInt(localStorage.getItem('visitCount'));
+                count++;
+                localStorage.setItem('visitCount', count);
+                document.getElementById('counter').innerText = count;
+            } else {
+       
+                localStorage.setItem('visitCount', 1);
+                document.getElementById('counter').innerText = 1;
+            }
+        }
+
+
+        function displayGif() {
+            const gifContainer = document.getElementById('gif-container');
+            const gifUrl = 'https://media1.tenor.com/m/R7GvCBaFDakAAAAC/snow-winter.gif';
+            const gifElement = document.createElement('img');
+            gifElement.src = gifUrl;
+            gifContainer.appendChild(gifElement);
+        }
+
+        increaseCounter();
+        displayGif();
+    </script>
+</body>
+</html>
